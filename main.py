@@ -29,7 +29,7 @@ def detirmen_le_snail(Person, Message):
 
 TOKEN = ":3" #SNAIL AUTH >:D
 GUILD_ID = ":3"
-#test
+
 import json
 token = ""
 guildid = int
@@ -51,6 +51,10 @@ async def on_ready():
     await tree.sync(guild=discord.Object(id=GUILD_ID))
     print("Context command synced.")
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name="Snailing it up in this bitch"))
+
+
+
+
 
 
 
