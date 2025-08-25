@@ -29,7 +29,7 @@ def detirmen_le_snail(Person, Message):
 
 TOKEN = ":3" #SNAIL AUTH >:D
 GUILD_ID = ":3"
-
+#test
 import json
 token = ""
 guildid = int
