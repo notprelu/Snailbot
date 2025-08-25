@@ -27,7 +27,7 @@ def detirmen_le_snail(Person, Message):
     decision = response.json()["message"]["content"].strip().lower()
     return decision == "yes"
 
-TOKEN = str(os.environ.get('snail_auth')) #SNAIL AUTH >:D
+TOKEN = ":3" #SNAIL AUTH >:D
 GUILD_ID = ":3"
 
 import json
