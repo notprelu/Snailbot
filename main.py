@@ -30,6 +30,17 @@ def detirmen_le_snail(Person, Message):
 TOKEN = str(os.environ.get('snail_auth')) #SNAIL AUTH >:D
 GUILD_ID = ":3"
 
+import json
+token = ""
+guildid = int
+with open("creds.json","r") as file:
+    data = json.load(file)
+    TOKEN = data["TOKEN"]
+    GUILD_ID = data["GUILD_ID"]
+
+
+
+
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 tree = discord.app_commands.CommandTree(client)
