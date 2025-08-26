@@ -11,7 +11,6 @@ import asyncio
 def detirmen_le_snail(Person, Message):
     print(Person)
     print(Message)
-    prompt = ":3"
     chat = [
         {"role": "system", "content": prompt},
         {"role": "user", "content": f"Message from Person: {Person} Message:{Message}"}
@@ -27,6 +26,24 @@ def detirmen_le_snail(Person, Message):
     decision = response.json()["message"]["content"].strip().lower()
     return decision == "yes"
 
+
+def snail_chat(Message):
+    print(Message)
+    chat = [
+        {"role": "user", "content": f"{Message}"}
+    ]
+    repose = requests.post(
+        "http://localhost:11434/api/chat",
+        json={
+            "model": "llama3",
+            "messages": chat,
+            "stream":False
+        }
+    )
+    return (repose.json()["message"]["content"].strip())
+
+
+
 TOKEN = ":3" #SNAIL AUTH >:D
 GUILD_ID = ":3"
 
@@ -37,6 +54,7 @@ with open("creds.json","r") as file:
     data = json.load(file)
     TOKEN = data["TOKEN"]
     GUILD_ID = data["GUILD_ID"]
+    #prompt = data["PROMPT"]
 
 
 
@@ -54,7 +72,11 @@ async def on_ready():
 
 
 
-
+@tree.command(name="snailchat", guild=discord.Object(id=GUILD_ID))
+async def chat(interaction: discord.Interaction, text: str):
+    await interaction.response.defer(thinking=True)
+    chat = snail_chat(str(text))
+    await interaction.followup.send(chat)
 
 
 
@@ -69,6 +91,11 @@ async def snail_log(interaction: discord.Interaction, message: discord.Message):
         await interaction.followup.send("I do say this is a snail worthy message 🐌")
     else:
         await interaction.followup.send("fuck you not 🐌 worthy")
+
+
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 {
     "TOKEN":"TOKEN",
-    "GUILD_ID":"GUILDID"
+    "GUILD_ID":"GUILDID",
+    "PROMPT":":3"
 }
